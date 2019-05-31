@@ -3,10 +3,10 @@
 BASE_DIR=$(cd $(dirname $0); pwd)
 
 xAvgCharWidth_SETVAL=1078
-HACKGEN_PATTERN='HackGen[^5]*.ttf'
+HACKGEN_PATTERN='HackGen[^7]*.ttf'
 
-xAvgCharWidth53_SETVAL=1030
-HACKGEN53_PATTERN='HackGen53*.ttf'
+xAvgCharWidth53_SETVAL=1036
+HACKGEN53_PATTERN='HackGen74*.ttf'
 
 for P in ${BASE_DIR}/${HACKGEN_PATTERN}; do
   ttx -t OS/2 -t post "$P"

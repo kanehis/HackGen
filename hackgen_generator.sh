@@ -7,7 +7,7 @@ hackgen_version="0.6.3"
 # Set familyname
 hackgen_familyname="HackGen"
 hackgen_familyname_suffix=""
-hackgen53_familyname="HackGen53"
+hackgen53_familyname="HackGen74"
 hackgen53_familyname_suffix=""
 hackgen_console_suffix="Console"
 
@@ -27,8 +27,8 @@ genjyuu_width=1024
 hackgen_half_width=539
 hackgen_full_width=$((${hackgen_half_width} * 2))
 
-hackgen53_half_width=618
-hackgen53_full_width=$((${hackgen53_half_width} * 5 / 3))
+hackgen53_half_width=592
+hackgen53_full_width=$((${hackgen53_half_width} * 7 / 4))
 
 # Set path to fontforge command
 fontforge_command="fontforge"
@@ -412,6 +412,8 @@ while (i < SizeOf(input_list))
     Open(input_list[i])
     SelectWorthOutputting()
     UnlinkReference()
+
+    Scale(96, 100, 0, 0)
 
     # 幅の変更 (Move で文字幅も変わることに注意)
     move_pt = $(((${hackgen53_half_width} - ${hack_width}) / 2)) # -8
@@ -1284,20 +1286,20 @@ _EOT_
 # Generate Material
 $fontforge_command -script ${tmpdir}/${modified_hack_material_generator} 2> $redirection_stderr || exit 4
 
-# Generate Console
-$fontforge_command -script ${tmpdir}/${modified_hack_console_generator} 2> $redirection_stderr || exit 4
-
-# Generate Modiifed Hack
-$fontforge_command -script ${tmpdir}/${modified_hack_generator} 2> $redirection_stderr || exit 4
-
-# Generate Modified GenJyuu
-$fontforge_command -script ${tmpdir}/${modified_genjyuu_generator} 2> $redirection_stderr || exit 4
-
-# Generate HackGen
-$fontforge_command -script ${tmpdir}/${hackgen_generator} 2> $redirection_stderr || exit 4
-
-# Generate HackGen Console
-$fontforge_command -script ${tmpdir}/${hackgen_console_generator} 2> $redirection_stderr || exit 4
+## Generate Console
+#$fontforge_command -script ${tmpdir}/${modified_hack_console_generator} 2> $redirection_stderr || exit 4
+#
+## Generate Modiifed Hack
+#$fontforge_command -script ${tmpdir}/${modified_hack_generator} 2> $redirection_stderr || exit 4
+#
+## Generate Modified GenJyuu
+#$fontforge_command -script ${tmpdir}/${modified_genjyuu_generator} 2> $redirection_stderr || exit 4
+#
+## Generate HackGen
+#$fontforge_command -script ${tmpdir}/${hackgen_generator} 2> $redirection_stderr || exit 4
+#
+## Generate HackGen Console
+#$fontforge_command -script ${tmpdir}/${hackgen_console_generator} 2> $redirection_stderr || exit 4
 
 # Generate Console - 53
 $fontforge_command -script ${tmpdir}/${modified_hack53_console_generator} 2> $redirection_stderr || exit 4
